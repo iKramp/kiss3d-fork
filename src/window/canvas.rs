@@ -167,7 +167,7 @@ pub(crate) trait AbstractCanvas {
     fn set_title(&mut self, title: &str);
     fn set_icon(&mut self, icon: impl GenericImage<Pixel = impl Pixel<Subpixel = u8>>);
     fn set_cursor_grab(&self, grab: bool);
-    fn set_cursor_position(&self, x: f64, y: f64);
+    fn set_cursor_position(&self, x: f64, y: f64) -> bool;
     fn hide_cursor(&self, hide: bool);
     fn hide(&mut self);
     fn show(&mut self);

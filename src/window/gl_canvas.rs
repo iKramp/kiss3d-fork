@@ -210,7 +210,7 @@ impl AbstractCanvas for GLCanvas {
     }
 
     fn scale_factor(&self) -> f64 {
-        self.window.window().scale_factor() as f64
+        self.window.window().scale_factor()
     }
 
     fn set_title(&mut self, title: &str) {
@@ -231,11 +231,11 @@ impl AbstractCanvas for GLCanvas {
         let _ = self.window.window().set_cursor_grab(grab);
     }
 
-    fn set_cursor_position(&self, x: f64, y: f64) {
+    fn set_cursor_position(&self, x: f64, y: f64) -> bool {
+        println!("Setting cursor position to ({}, {})", x, y);
         self.window
             .window()
-            .set_cursor_position(glutin::dpi::PhysicalPosition::new(x, y))
-            .unwrap();
+            .set_cursor_position(glutin::dpi::PhysicalPosition::new(x, y)).is_ok()
     }
 
     fn hide_cursor(&self, hide: bool) {
